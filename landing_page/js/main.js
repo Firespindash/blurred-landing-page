@@ -1,9 +1,9 @@
 // DOM Elements
 const body = document.getElementById('body'),
-  time = document.getElementById('time'),
+  time     = document.getElementById('time'),
   greeting = document.getElementById('greeting'),
-  name = document.getElementById('name'),
-  focus = document.getElementById('focus');
+  name     = document.getElementById('name'),
+  focus    = document.getElementById('focus');
 
 // Create Blur Effect Element
 var glass = document.createElement('div');
@@ -11,9 +11,9 @@ glass.setAttribute('id', 'glass');
 body.appendChild(glass);
 
 // Transition Effect
-function removeFadeOut( el, speed ) {
-    var seconds = speed/1000;
-    el.style.transition = "opacity "+seconds+"s ease";
+function removeFadeOut (el, speed) {
+    var seconds = speed / 1000;
+    el.style.transition = "opacity " + seconds + "s ease";
 
     el.style.opacity = 0;
     setTimeout(function() {
@@ -21,7 +21,7 @@ function removeFadeOut( el, speed ) {
     }, speed);
 }
 
-function appendFadeIn( element, speed ) {
+function appendFadeIn (element, speed) {
   body.appendChild(element);
   setTimeout(function() {
     element.style.opacity = 1;
@@ -30,10 +30,11 @@ function appendFadeIn( element, speed ) {
 }
 
 // Add Events for the Transition Effect
-name.onfocus = function(){removeFadeOut(glass, 500);}
-name.onblur = function(){appendFadeIn(glass, 500);}
-focus.onfocus = function(){removeFadeOut(glass, 500);}
-focus.onblur = function(){appendFadeIn(glass, 500);}
+name.onfocus = function() { removeFadeOut(glass, 500); }
+name.onblur = function() { appendFadeIn(glass, 500); }
+
+focus.onfocus = function() { removeFadeOut(glass, 500); }
+focus.onblur = function() { appendFadeIn(glass, 500); }
 
 // Show Time
 function showTime() {
@@ -59,7 +60,7 @@ function setBgGreet() {
   let today = new Date(),
     hour = today.getHours();
 
-  if(hour < 12) {
+  if (hour < 12) {
     // Morning
     document.body.style.backgroundImage = "url('img/morning.jpg')";
     greeting.textContent = 'Good Morning';
@@ -92,7 +93,7 @@ function FixBackgroundToScreen() {
 
 // Get Name
 function getName() {
-  if(localStorage.getItem('name') === null) {
+  if (localStorage.getItem('name') === null) {
     name.textContent = '[Enter Name]';
   }
   else {
@@ -102,9 +103,9 @@ function getName() {
 
 // Set Name
 function setName(e) {
-  if(e.type === 'keypress') {
+  if (e.type === 'keypress') {
     // Make sure enter is pressed
-    if(e.which == 13 || e.keyCode == 13) {
+    if (e.which == 13 || e.keyCode == 13) {
       localStorage.setItem('name', e.target.innerText);
       name.blur();
     }
@@ -116,7 +117,7 @@ function setName(e) {
 
 // Get Focus
 function getFocus() {
-  if(localStorage.getItem('focus') === null) {
+  if (localStorage.getItem('focus') === null) {
     focus.textContent = '[Enter Focus]';
   }
   else {
@@ -126,9 +127,9 @@ function getFocus() {
 
 // Set Focus
 function setFocus(e) {
-  if(e.type === 'keypress') {
+  if (e.type === 'keypress') {
     // Make sure enter is pressed
-    if(e.which == 13 || e.keyCode == 13) {
+    if (e.which == 13 || e.keyCode == 13) {
       localStorage.setItem('focus', e.target.innerText);
       focus.blur();
     }
@@ -140,6 +141,7 @@ function setFocus(e) {
 
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
+
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 
