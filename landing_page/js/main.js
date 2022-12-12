@@ -12,13 +12,13 @@ body.appendChild(glass);
 
 // Transition Effect
 function removeFadeOut (el, speed) {
-    var seconds = speed / 1000;
-    el.style.transition = "opacity " + seconds + "s ease";
+  var seconds = speed / 1000;
+  el.style.transition = "opacity " + seconds + "s ease";
 
-    el.style.opacity = 0;
-    setTimeout(function() {
-        body.removeChild(el);
-    }, speed);
+  el.style.opacity = 0;
+  setTimeout(function() {
+    body.removeChild(el);
+  }, speed);
 }
 
 function appendFadeIn (element, speed) {
@@ -26,7 +26,6 @@ function appendFadeIn (element, speed) {
   setTimeout(function() {
     element.style.opacity = 1;
   }, speed);
-
 }
 
 // Add Events for the Transition Effect
@@ -82,13 +81,13 @@ function setBgGreet() {
 
 // Fixing Background
 function FixBackgroundToScreen() {
-    bgImg = new Image();
-    bgImg.src = document.body.background;
+  bgImg = new Image();
+  bgImg.src = document.body.background;
 
-    if ((bgImg.height / window.innerHeight) < (bgImg.width / window.innerWidth))
-        document.body.style.backgroundSize = "auto 100%";
-    else
-        document.body.style.backgroundSize = "100% 100%";
+  if ((bgImg.height / window.innerHeight) < (bgImg.width / window.innerWidth))
+    document.body.style.backgroundSize = "auto 100%";
+  else
+    document.body.style.backgroundSize = "100% 100%";
 }
 
 // Get Name
